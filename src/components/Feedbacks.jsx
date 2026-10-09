@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -18,7 +17,7 @@ const FeedbackCard = ({
     variants={fadeIn("", "spring", index * 0.5, 0.75)}
     className='bg-black-200 p-10 rounded-3xl xs:w-[320px] w-full'
   >
-    <p className='text-white font-black text-[48px]'>"</p>
+    <p className='text-white font-black text-[48px]'>&quot;</p>
 
     <div className='mt-1'>
       <p className='text-white tracking-wider text-[18px]'>{testimonial}</p>
@@ -35,7 +34,7 @@ const FeedbackCard = ({
 
         <img
           src={image}
-          alt={`feedback_by-${name}`}
+          alt={`feedback by ${name}`}
           className='object-cover w-10 h-10 rounded-full'
         />
       </div>
@@ -63,4 +62,5 @@ const Feedbacks = () => {
   );
 };
 
-export default SectionWrapper(Feedbacks, "");
+const FeedbacksSection = SectionWrapper(Feedbacks, "feedbacks");
+export default FeedbacksSection;

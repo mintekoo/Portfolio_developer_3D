@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
@@ -17,6 +17,23 @@ const Navbar = () => {
         setScrolled(true);
       } else {
         setScrolled(false);
+      }
+
+      const scrollPosition = scrollTop + 250;
+      let currentSection = "";
+
+      for (let i = navLinks.length - 1; i >= 0; i--) {
+        const section = document.getElementById(navLinks[i].id);
+        if (section && section.offsetTop <= scrollPosition) {
+          currentSection = navLinks[i].title;
+          break;
+        }
+      }
+
+      if (scrollTop < 100) {
+        setActive("");
+      } else if (currentSection) {
+        setActive(currentSection);
       }
     };
 
@@ -42,10 +59,10 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="object-contain h-12 w-15" />
+          <img src={logo} alt="Minte logo" className="object-contain h-12 w-12" />
           <p className="text-white text-[18px] font-bold cursor-pointer flex ">
             Minte &nbsp;
-            <span className="hidden sm:block"> | Full stuck Developer</span>
+            <span className="hidden sm:block"> | Full Stack Developer</span>
           </p>
         </Link>
 
@@ -64,12 +81,19 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center justify-end flex-1 sm:hidden">
-          <img
-            src={toggle ? close : menu}
-            alt="menu"
-            className="w-[28px] h-[28px] object-contain"
+          <button
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded={toggle}
+            className="w-10 h-10 flex items-center justify-center rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20"
             onClick={() => setToggle(!toggle)}
-          />
+          >
+            <img
+              src={toggle ? close : menu}
+              alt={toggle ? "Close menu" : "Open menu"}
+              className="w-[28px] h-[28px] object-contain"
+            />
+          </button>
 
           <div
             className={`${

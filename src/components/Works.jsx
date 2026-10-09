@@ -1,5 +1,4 @@
-import React from "react";
-import {Tilt} from "react-tilt";
+import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -29,21 +28,24 @@ const ProjectCard = ({
         <div className="relative w-full h-[230px]">
           <img
             src={image}
-            alt="project_image"
+            alt={name}
             className="object-cover w-full h-full rounded-2xl"
           />
 
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-            <div
-              onClick={() => window.open(source_code_link, "_blank")}
-              className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer black-gradient"
+            <a
+              href={source_code_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${name} source code on GitHub`}
+              className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer black-gradient hover:scale-110 transition-transform focus:outline-none focus:ring-2 focus:ring-white/40"
             >
               <img
                 src={github}
-                alt="source code"
+                alt="GitHub source code"
                 className="object-contain w-1/2 h-1/2"
               />
-            </div>
+            </a>
           </div>
         </div>
 
@@ -97,4 +99,5 @@ const Works = () => {
   );
 };
 
-export default SectionWrapper(Works, "");
+const WorksSection = SectionWrapper(Works, "projects");
+export default WorksSection;

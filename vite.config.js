@@ -12,16 +12,14 @@ export default defineConfig({
     // Explicitly define the output directory
     outDir: 'dist',
 
-    // Enable manual chunks to split large libraries into separate files
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          // Split node_modules into a separate chunk to reduce main file size
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
-        }
-      }
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-three': ['three', '@react-three/fiber', '@react-three/drei'],
+          'vendor-motion': ['framer-motion', 'react-tilt', 'react-vertical-timeline-component'],
+        },
+      },
     },
 
     // Increase chunk size limit if needed

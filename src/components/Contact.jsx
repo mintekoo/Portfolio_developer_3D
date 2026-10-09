@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -16,6 +16,7 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState({ type: "", message: "" });
 
   const handleChange = (e) => {
     const { target } = e;
@@ -25,30 +26,71 @@ const Contact = () => {
       ...form,
       [name]: value,
     });
+    if (status.message) {
+      setStatus({ type: "", message: "" });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const message = form.message.trim();
+
+    if (!name || !email || !message) {
+      setStatus({
+        type: "error",
+        message: "Please fill in all fields before submitting.",
+      });
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setStatus({
+        type: "error",
+        message: "Please enter a valid email address.",
+      });
+      return;
+    }
+
+    const serviceId = import.meta.env.VITE_APP_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setStatus({
+        type: "info",
+        message:
+          "Thank you for reaching out! (EmailJS credentials are pending configuration in environment variables).",
+      });
+      setForm({ name: "", email: "", message: "" });
+      return;
+    }
+
     setLoading(true);
 
     emailjs
       .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         {
-          from_name: form.name,
-          to_name: "Minte_from_3D_contact",
-          from_email: form.email,
+          from_name: name,
+          to_name: "Minte",
+          from_email: email,
           to_email: "mintesinottamene0917@gmail.com",
-          message: form.message,
+          message: message,
         },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        publicKey
       )
       .then(
         () => {
           setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
-
+          setStatus({
+            type: "success",
+            message: "Thank you! I will get back to you as soon as possible.",
+          });
           setForm({
             name: "",
             email: "",
@@ -58,8 +100,10 @@ const Contact = () => {
         (error) => {
           setLoading(false);
           console.error(error);
-
-          alert("Ahh, something went wrong. Please try again.");
+          setStatus({
+            type: "error",
+            message: "Something went wrong sending the message. Please try again later.",
+          });
         }
       );
   };
@@ -75,48 +119,77 @@ const Contact = () => {
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
+        {status.message && (
+          <div
+            className={`mt-4 p-4 rounded-lg text-sm font-medium ${
+              status.type === "success"
+                ? "bg-green-900/40 text-green-300 border border-green-500/30"
+                : status.type === "info"
+                ? "bg-blue-900/40 text-blue-300 border border-blue-500/30"
+                : "bg-red-900/40 text-red-300 border border-red-500/30"
+            }`}
+            role="alert"
+          >
+            {status.message}
+          </div>
+        )}
+
         <form
           ref={formRef}
           onSubmit={handleSubmit}
           className="flex flex-col gap-8 mt-12"
+          noValidate
         >
-          <label className="flex flex-col">
-            <span className="mb-4 font-medium text-white">Your Name</span>
+          <div className="flex flex-col">
+            <label htmlFor="contact-name" className="mb-4 font-medium text-white">
+              Your Name
+            </label>
             <input
+              id="contact-name"
               type="text"
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="What's your good name?"
-              className="px-6 py-4 font-medium text-white border-none rounded-lg outline-none bg-tertiary placeholder:text-secondary"
+              placeholder="What's your name?"
+              className="px-6 py-4 font-medium text-white border-none rounded-lg outline-none bg-tertiary placeholder:text-secondary focus:ring-2 focus:ring-[#915EFF]"
+              required
             />
-          </label>
-          <label className="flex flex-col">
-            <span className="mb-4 font-medium text-white">Your email</span>
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="contact-email" className="mb-4 font-medium text-white">
+              Your Email
+            </label>
             <input
+              id="contact-email"
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your web address?"
-              className="px-6 py-4 font-medium text-white border-none rounded-lg outline-none bg-tertiary placeholder:text-secondary"
+              placeholder="What's your email address?"
+              className="px-6 py-4 font-medium text-white border-none rounded-lg outline-none bg-tertiary placeholder:text-secondary focus:ring-2 focus:ring-[#915EFF]"
+              required
             />
-          </label>
-          <label className="flex flex-col">
-            <span className="mb-4 font-medium text-white">Your Message</span>
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="contact-message" className="mb-4 font-medium text-white">
+              Your Message
+            </label>
             <textarea
+              id="contact-message"
               rows={7}
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="What you want to say?"
-              className="px-6 py-4 font-medium text-white border-none rounded-lg outline-none bg-tertiary placeholder:text-secondary"
+              placeholder="What would you like to say?"
+              className="px-6 py-4 font-medium text-white border-none rounded-lg outline-none bg-tertiary placeholder:text-secondary focus:ring-2 focus:ring-[#915EFF]"
+              required
             />
-          </label>
+          </div>
 
           <button
             type="submit"
-            className="px-8 py-3 font-bold text-white shadow-md outline-none bg-tertiary rounded-xl w-fit shadow-primary"
+            disabled={loading}
+            className="px-8 py-3 font-bold text-white shadow-md outline-none bg-tertiary rounded-xl w-fit shadow-primary hover:bg-[#1a143d] transition-colors focus:ring-2 focus:ring-[#915EFF] disabled:opacity-50"
           >
             {loading ? "Sending..." : "Send"}
           </button>
@@ -133,4 +206,5 @@ const Contact = () => {
   );
 };
 
-export default SectionWrapper(Contact, "contact");
+const ContactSection = SectionWrapper(Contact, "contact");
+export default ContactSection;

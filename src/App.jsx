@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import {
@@ -13,6 +14,19 @@ import {
 } from "./components";
 
 const App = () => {
+  useEffect(() => {
+    if (window.location.hash) {
+      const timer = setTimeout(() => {
+        const id = window.location.hash.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="relative z-0 bg-primary">

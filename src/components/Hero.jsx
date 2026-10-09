@@ -16,7 +16,7 @@ const Hero = () => {
 
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className="text-[#915EFF]">Minte</span>
+            Hi, I&apos;m <span className="text-[#915EFF]">Minte</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
             I develop 3D visuals, user <br className="hidden sm:block" />
@@ -28,7 +28,7 @@ const Hero = () => {
       <ComputersCanvas />
 
       <div className="absolute flex items-center justify-center w-full xs:bottom-10 bottom-32">
-        <a href="#about">
+        <a href="#about" aria-label="Scroll down to About section">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
               animate={{

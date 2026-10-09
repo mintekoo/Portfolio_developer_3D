@@ -1,7 +1,8 @@
-import { useState, useRef, Suspense } from "react";
+import { useState, useRef, Suspense, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial, Preload } from "@react-three/drei";
+import { Points, PointMaterial } from "@react-three/drei";
 import * as random from "maath/random/dist/maath-random.esm";
+import CanvasErrorBoundary from "./CanvasErrorBoundary";
 
 /**
  * Generates a sphere of stars in 3D space.
@@ -12,14 +13,16 @@ import * as random from "maath/random/dist/maath-random.esm";
 const Stars = (props) => {
   const ref = useRef();
   const [sphere] = useState(() =>
-    // Generate a sphere of 5000 points with a radius of 1.2
-    random.inSphere(new Float32Array(5000), { radius: 1.2 })
+    // Generate a sphere of 5001 points (divisible by 3 for x, y, z triplets) with a radius of 1.2
+    random.inSphere(new Float32Array(5001), { radius: 1.2 })
   );
 
   useFrame((state, delta) => {
     // Rotate the sphere around the x and y axes over time
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 15;
+    if (ref.current) {
+      ref.current.rotation.x -= delta / 10;
+      ref.current.rotation.y -= delta / 15;
+    }
   });
 
   return (
@@ -32,15 +35,10 @@ const Stars = (props) => {
         {...props}
       >
         <PointMaterial
-          // Make the stars transparent
           transparent
-          // Set the color of the stars
           color="#f272c8"
-          // Set the size of the stars
           size={0.002}
-          // Make the stars size decrease with distance
           sizeAttenuation={true}
-          // Do not write to the depth buffer
           depthWrite={false}
         />
       </Points>
@@ -48,17 +46,39 @@ const Stars = (props) => {
   );
 };
 
-
 const StarsCanvas = () => {
-  return (
-    <div className="w-full h-auto absolute inset-0 z-[-1]">
-      <Canvas camera={{ position: [0, 0, 1] }}>
-        <Suspense fallback={null}>
-          <Stars />
-        </Suspense>
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef();
 
-        <Preload all />
-      </Canvas>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={containerRef} className="w-full h-auto absolute inset-0 z-[-1]">
+      <CanvasErrorBoundary fallback={null}>
+        <Canvas
+          frameloop={isVisible ? "always" : "never"}
+          dpr={[1, 1.5]}
+          camera={{ position: [0, 0, 1] }}
+          gl={{ powerPreference: "low-power" }}
+        >
+          <Suspense fallback={null}>
+            <Stars />
+          </Suspense>
+        </Canvas>
+      </CanvasErrorBoundary>
     </div>
   );
 };
