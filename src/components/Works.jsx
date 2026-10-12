@@ -7,6 +7,7 @@ import { github, externalLink } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects, projectCategories } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
+import ProjectDetailsModal from "./ProjectDetailsModal";
 
 const ProjectCard = ({
   index,
@@ -20,6 +21,7 @@ const ProjectCard = ({
   is_organization_repo,
   is_company_project,
   company_name,
+  onSelect,
 }) => {
   return (
     <motion.div
@@ -36,7 +38,17 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className="bg-tertiary p-5 rounded-2xl w-full flex flex-col justify-between"
+        onClick={onSelect}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onSelect();
+          }
+        }}
+        tabIndex={0}
+        role="button"
+        aria-label={`View details and preview for ${name}`}
+        className="bg-tertiary p-5 rounded-2xl w-full flex flex-col justify-between cursor-pointer border border-transparent hover:border-[#915eff]/30 hover:shadow-xl hover:shadow-[#915eff]/10 transition-all focus:outline-none focus:ring-2 focus:ring-[#915eff]/40"
       >
         <div>
           <div className="relative w-full h-[220px]">
@@ -53,6 +65,7 @@ const ProjectCard = ({
                   href={live_demo_link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
                   aria-label={`Open live demo for ${name}`}
                   className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer bg-[#915eff] hover:scale-110 transition-transform focus:outline-none focus:ring-2 focus:ring-white/40 shadow-lg"
                   title="View Live Demo"
@@ -70,6 +83,7 @@ const ProjectCard = ({
                   href={source_code_link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
                   aria-label={`View ${name} source code on GitHub`}
                   className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer black-gradient hover:scale-110 transition-transform focus:outline-none focus:ring-2 focus:ring-white/40 shadow-lg"
                   title={is_organization_repo ? "Organization Repository" : "GitHub Repository"}
@@ -104,15 +118,30 @@ const ProjectCard = ({
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-2 mt-5 pt-3 border-t border-white/5">
-          {tags.map((tag) => (
-            <p
-              key={`${name}-${tag.name}`}
-              className={`text-[13px] font-medium ${tag.color}`}
-            >
-              #{tag.name}
-            </p>
-          ))}
+        <div className="flex items-center justify-between gap-2 mt-5 pt-3 border-t border-white/5">
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <p
+                key={`${name}-${tag.name}`}
+                className={`text-[13px] font-medium ${tag.color}`}
+              >
+                #{tag.name}
+              </p>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onSelect();
+            }}
+            className="text-[#915eff] hover:text-[#b08eff] text-[12px] sm:text-[13px] font-semibold flex items-center gap-1 transition-colors shrink-0 group/btn focus:outline-none"
+            aria-label={`View details and live preview for ${name}`}
+          >
+            <span>Preview</span>
+            <span className="transition-transform group-hover/btn:translate-x-1">→</span>
+          </button>
         </div>
       </Tilt>
     </motion.div>
@@ -121,6 +150,7 @@ const ProjectCard = ({
 
 const Works = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const filteredProjects = activeCategory === "All"
     ? projects
@@ -186,11 +216,19 @@ const Works = () => {
             <ProjectCard
               key={project.id || `project-${index}`}
               index={index}
+              project={project}
+              onSelect={() => setSelectedProject(project)}
               {...project}
             />
           ))}
         </AnimatePresence>
       </div>
+
+      {/* Reusable Project Details Preview Modal */}
+      <ProjectDetailsModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </>
   );
 };

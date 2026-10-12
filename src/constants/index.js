@@ -17,7 +17,6 @@ import {
   docker,
   meta,
   starbucks,
-  tesla,
   shopify,
   threejs,
   aiCareerCoach,
@@ -137,51 +136,40 @@ const experiences = [
     company_name: "Abyssinia Software Technology",
     icon: meta,
     iconBg: "#1d1836",
-    date: "Jan 2024 - Present",
+    date: "Mar 2025 - Present",
     points: [
-      "Architecting and delivering full-stack web and mobile platforms, including the Abyssinia Marriage platform and Telegram Mini App integration.",
-      "Developing backend microservices and service routing with Node.js, Express, and MongoDB for scalable production systems.",
-      "Implementing robust security controls: OTP phone verification, role-based authorization, input field allowlisting, and access validation.",
-      "Conducting comprehensive QA/UAT reviews, regression testing, and production deployment automation.",
+      "Developing and maintaining full-stack web applications and backend services using JavaScript, React, Node.js, Express, and database technologies.",
+      "Contributing to the Abyssinia Marriage platform, including authentication, phone OTP verification, Telegram Mini App integration, and user profile workflows.",
+      "Improving application security through role-based authorization, input allowlisting, sensitive-data protection, and API access validation.",
+      "Conducting QA/UAT reviews, regression testing, debugging, and deployment verification to improve application reliability.",
+      "Contributing to backend API development, database operations, and application integrations across business-oriented software projects.",
     ],
   },
   {
-    title: "React.js Developer",
-    company_name: "Minte",
+    title: "Independent Full Stack Developer",
+    company_name: "Freelance / Personal Projects",
     icon: starbucks,
     iconBg: "#383E56",
     date: "Jan 2023 - Dec 2024",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Laravel Developer",
-    company_name: "minte",
-    icon: tesla,
-    iconBg: "#E6DEDD",
-    date: "Jan 2023 - Feb 2024",
-    points: [
-      "Developing and maintaining web applications using Laravel and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Built and maintained web applications using React.js, Laravel, JavaScript, and database technologies.",
+      "Developed frontend interfaces and backend functionality, integrating application workflows with APIs and databases.",
+      "Implemented responsive layouts and reusable components to improve usability and maintainability.",
+      "Worked on academic and personal projects, including e-commerce, hotel booking, and job portal applications.",
+      "Used debugging, version control, and iterative development to improve software quality.",
     ],
   },
   {
     title: "Web Developer",
-    company_name: "JIT",
+    company_name: "Jimma Institute of Technology",
     icon: shopify,
     iconBg: "#383E56",
     date: "Jan 2022 - Jan 2024",
     points: [
-      "Developing and maintaining web applications using HTML, CSS, and JavaScript and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Participated in web development activities and technology projects using HTML, CSS, JavaScript, and related tools.",
+      "Developed and refined web interfaces with a focus on usability, responsive design, and browser compatibility.",
+      "Applied programming, debugging, and problem-solving skills to practical software development tasks.",
+      "Collaborated on project work and applied software engineering concepts to application development.",
     ],
   },
 ];
@@ -227,9 +215,16 @@ const projects = [
     id: "ai-career-coach",
     name: "AI Career Coach",
     subtitle: "Full-Stack AI Application",
+    role: "Full-Stack Engineer",
     category: "Full-Stack",
     description:
       "Full-stack AI-powered career coaching platform using Next.js, Prisma, PostgreSQL, and Clerk authentication. Features automated onboarding, role-based routing, Inngest event-driven background processing, and serverless deployment on Vercel.",
+    highlights: [
+      "Architected secure user onboarding & authentication with Clerk and role-based route guards.",
+      "Integrated Inngest event-driven background workflows for automated resume analysis and career queues.",
+      "Engineered PostgreSQL database models with Prisma ORM optimized for serverless edge runtimes.",
+      "Configured automated Vercel CI/CD pipeline, environment validation, and secure RESTful AI integrations.",
+    ],
     tags: [
       { name: "Next.js", color: "blue-text-gradient" },
       { name: "React", color: "green-text-gradient" },
@@ -245,11 +240,18 @@ const projects = [
     id: "abay-equb",
     name: "Abay Equb Platform",
     subtitle: "Digital Equb Management System",
+    role: "Full-Stack Developer",
     category: "Full-Stack",
     is_company_project: true,
     company_name: "Abyssinia Software Technology",
     description:
       "Contributed to the development of Abay Equb at Abyssinia Software Technology, digitizing traditional Equb community savings workflows. Implemented full-stack features, API integration, database design, rotating payout cycles, and maintainable services.",
+    highlights: [
+      "Digitized traditional Equb community savings workflows with rotating payout cycles and ledger tracking.",
+      "Engineered RESTful API endpoints in Node.js and Express connected to normalized MySQL schemas.",
+      "Built responsive dashboard interfaces in React with real-time financial summaries and payout timelines.",
+      "Implemented strict transaction validation, audit trails, and member status verification.",
+    ],
     tags: [
       { name: "JavaScript", color: "blue-text-gradient" },
       { name: "Node.js", color: "green-text-gradient" },
@@ -265,11 +267,18 @@ const projects = [
     id: "delalaye-real-estate",
     name: "Delalaye Real Estate",
     subtitle: "Brokerage & Property Management",
+    role: "Full-Stack Developer",
     category: "Full-Stack",
     is_company_project: true,
     company_name: "Abyssinia Software Technology",
     description:
       "Full-stack real estate and brokerage management platform built with Node.js, Express, Sequelize ORM, MySQL, and a React + Vite admin dashboard. Manages user auth, broker profiles, property listings, client assignments, deal pipelines, transactions, and analytics.",
+    highlights: [
+      "Engineered full-stack real estate platform with Express.js, Sequelize ORM, MySQL, and React/Vite admin dashboard.",
+      "Organized complex relational domain with 27 models covering properties, brokers, deals, and escrow payments.",
+      "Implemented role-based access control (RBAC), token authentication, and multi-filter property discovery.",
+      "Streamlined broker-client assignment pipelines, transaction state machines, and analytical reporting.",
+    ],
     tags: [
       { name: "Node.js", color: "green-text-gradient" },
       { name: "Express.js", color: "blue-text-gradient" },
@@ -284,11 +293,18 @@ const projects = [
     id: "futurex-microservices",
     name: "FutureX Microservices",
     subtitle: "Backend Microservices Architecture",
+    role: "Backend Microservices Developer",
     category: "Backend & APIs",
     is_company_project: true,
     company_name: "Abyssinia Software Technology",
     description:
       "Backend microservices architecture organizing enrollment, activity tracking, and community forum features across independent services with multi-port routing, subdomain orchestration, and database management.",
+    highlights: [
+      "Architected decoupled microservices for course enrollment, student activity tracking, and community forums.",
+      "Implemented independent service port allocations, reverse proxy routing, and subdomain orchestration.",
+      "Designed resilient REST API contracts with structured error handling and database connection pooling.",
+      "Configured microservice health checks, CORS security policies, and isolated environment configurations.",
+    ],
     tags: [
       { name: "Node.js", color: "green-text-gradient" },
       { name: "JavaScript", color: "blue-text-gradient" },
@@ -297,18 +313,26 @@ const projects = [
       { name: "Microservices", color: "blue-text-gradient" },
     ],
     image: futurexMicroservices,
-    source_code_link: "https://github.com/abyssiniasoftware/futurex-backend-microservice",
+    source_code_link:
+      "https://github.com/abyssiniasoftware/futurex-backend-microservice",
     is_organization_repo: true,
   },
   {
     id: "abyssinia-dating",
     name: "Abyssinia Marriage Platform",
     subtitle: "Web & Telegram Mini App",
+    role: "Full-Stack Security & Feature Developer",
     category: "Full-Stack",
     is_company_project: true,
     company_name: "Abyssinia Software Technology",
     description:
       "Full-stack matchmaking and dating platform built with Node.js, Express, MongoDB, and React with Telegram Mini App integration. Features phone OTP verification, role-based authorization, input field allowlisting, sensitive data protection, and QA/UAT verification.",
+    highlights: [
+      "Developed matchmaking workflows with web interfaces and seamless Telegram Mini App integration.",
+      "Implemented phone OTP verification, JWT session handling, and role-based access control.",
+      "Hardened backend security with input allowlisting, NoSQL injection mitigations, and sensitive data masking.",
+      "Conducted extensive QA/UAT verification, automated regression tests, and security audits.",
+    ],
     tags: [
       { name: "Node.js", color: "green-text-gradient" },
       { name: "Express.js", color: "blue-text-gradient" },
@@ -324,11 +348,18 @@ const projects = [
     id: "mgw-tutorials",
     name: "MGW Tutorials",
     subtitle: "Educational Application Development",
+    role: "Frontend & Application Developer",
     category: "Frontend",
     is_company_project: true,
     company_name: "Abyssinia Software Technology",
     description:
       "Contributed to MGW Tutorials, an educational platform project at Abyssinia Software Technology. Focused on maintainable application structure, interactive course navigation, video playback interfaces, and seamless integration between frontend and backend components.",
+    highlights: [
+      "Constructed interactive course browsing and structured lesson hierarchy in React.",
+      "Integrated video streaming players with progress checkpoint tracking and playback speed persistence.",
+      "Engineered responsive UI layouts with mobile-first adaptability across various viewport sizes.",
+      "Connected frontend views to REST endpoints with optimistic caching and quick load times.",
+    ],
     tags: [
       { name: "React", color: "blue-text-gradient" },
       { name: "JavaScript", color: "pink-text-gradient" },
@@ -343,11 +374,18 @@ const projects = [
     id: "entrance-zone",
     name: "Entrance Zone",
     subtitle: "Entrance Exam Preparation Platform",
+    role: "Frontend Developer",
     category: "Frontend",
     is_company_project: true,
     company_name: "Abyssinia Software Technology",
     description:
       "Contributed to Entrance Zone at Abyssinia Software Technology, supporting university entrance exam preparation. Built maintainable exam practice modules, timed tests, question management interfaces, and student performance assessments.",
+    highlights: [
+      "Developed national entrance exam simulation modules with timed countdown clocks and auto-submit triggers.",
+      "Built interactive multiple-choice question navigators with instant score tabulation and detailed answer keys.",
+      "Engineered responsive UI using React and modern CSS for optimal accessibility on mobile devices.",
+      "Optimized test bundle size and client-side rendering for fast response times even on constrained networks.",
+    ],
     tags: [
       { name: "JavaScript", color: "blue-text-gradient" },
       { name: "React", color: "pink-text-gradient" },
@@ -362,11 +400,18 @@ const projects = [
     id: "daily-transport",
     name: "Daily Transport",
     subtitle: "Transport Management Application",
+    role: "Full-Stack Developer",
     category: "Full-Stack",
     is_company_project: true,
     company_name: "Abyssinia Software Technology",
     description:
       "Contributed to Daily Transport at Abyssinia Software Technology, supporting transport-oriented digital workflows. Focused on vehicle scheduling, route tracking, driver shift coordination, ticket booking management, and API-driven data integration.",
+    highlights: [
+      "Engineered bus and taxi fleet coordination workflows with departure scheduling and seat availability trackers.",
+      "Built ticket reservation endpoints and driver shift management modules in Node.js and Express.",
+      "Created responsive dispatcher and passenger interfaces with live route progress indicators.",
+      "Implemented relational data queries with MySQL to prevent overbooking and schedule overlaps.",
+    ],
     tags: [
       { name: "JavaScript", color: "blue-text-gradient" },
       { name: "Node.js", color: "green-text-gradient" },
@@ -381,9 +426,16 @@ const projects = [
     id: "digital-code-mobile",
     name: "Digital Code Mobile App",
     subtitle: "Flutter Mobile Application",
+    role: "Mobile Application Developer",
     category: "Mobile",
     description:
       "Cross-platform mobile application developed with Flutter and Dart using a feature-oriented architecture (Home, Package, Product, Scan). Implemented package navigation, payment-request workflows, deep link routing, and automated test coverage.",
+    highlights: [
+      "Structured cross-platform mobile client with Flutter and Dart using feature-first modular architecture.",
+      "Implemented barcode/QR voucher scanning workflows and secure in-app payment request flows.",
+      "Engineered deep link navigation handlers and persistent offline state synchronization.",
+      "Authored unit and widget test suites ensuring regression-free mobile releases across Android and iOS.",
+    ],
     tags: [
       { name: "Flutter", color: "blue-text-gradient" },
       { name: "Dart", color: "pink-text-gradient" },
@@ -398,9 +450,16 @@ const projects = [
     id: "ride-admin-dashboard",
     name: "Ride Admin Dashboard",
     subtitle: "React Administration Interface",
+    role: "Frontend Developer",
     category: "Frontend",
     description:
       "Administrative dashboard built with React, Vite, JavaScript, and Tailwind CSS. Implements reusable CRUD components, centralized API configuration, shared theme/auth context providers, and versioned REST API integration.",
+    highlights: [
+      "Constructed centralized management dashboard with React, Vite, and Tailwind CSS.",
+      "Created reusable table, modal, and pagination components with unified styling.",
+      "Configured custom Axios interceptors for automatic JWT refresh and standardized API error alerts.",
+      "Integrated dark/light theme context provider and persistent user session states.",
+    ],
     tags: [
       { name: "React", color: "blue-text-gradient" },
       { name: "JavaScript", color: "pink-text-gradient" },
@@ -415,11 +474,18 @@ const projects = [
     id: "delalaye-backend",
     name: "Delalaye Backend System",
     subtitle: "Database Seeding & Validation",
+    role: "Backend & Database Engineer",
     category: "Backend & APIs",
     is_company_project: true,
     company_name: "Abyssinia Software Technology",
     description:
       "Structured database seeding and validation system for the Delalaye backend using Sequelize ORM and MySQL. Organized seeders for reference data, demo scenarios, and role-based access control with integrity checks across 27 models.",
+    highlights: [
+      "Structured comprehensive database seeder suite using Sequelize ORM across 27 interconnected MySQL models.",
+      "Simulated realistic production data scenarios including active property listings, user roles, and deal cycles.",
+      "Enforced foreign-key integrity checks, cascading relations, and automated schema migrations.",
+      "Developed CLI seeder execution scripts for rapid local developer environment bootstrapping and CI pipelines.",
+    ],
     tags: [
       { name: "Node.js", color: "green-text-gradient" },
       { name: "Sequelize ORM", color: "blue-text-gradient" },
@@ -434,9 +500,16 @@ const projects = [
     id: "chat-app-mern",
     name: "Real-Time Chat App",
     subtitle: "MERN Stack & Socket.io",
+    role: "Full-Stack Developer",
     category: "Full-Stack",
     description:
       "Dynamic real-time chat application built with the MERN stack, enhanced with Socket.io for live messaging and TailwindCSS + Daisy UI for responsive design. Features secure JWT authentication, online user presence tracking, and global state management with Zustand.",
+    highlights: [
+      "Engineered real-time bi-directional messaging application utilizing Socket.io and Node.js WebSocket gateway.",
+      "Implemented secure user authentication with JWT stored in HTTP-only cookies and bcrypt password hashing.",
+      "Integrated instant online/offline user presence tracking and live typing notifications.",
+      "Managed client-side global conversation state using Zustand with responsive Tailwind CSS & DaisyUI styling.",
+    ],
     tags: [
       { name: "React", color: "blue-text-gradient" },
       { name: "Node.js", color: "green-text-gradient" },
@@ -451,9 +524,16 @@ const projects = [
     id: "ai-api-integrations",
     name: "AI & API Integrations",
     subtitle: "Application Development & Gateway",
+    role: "AI Integrations Engineer",
     category: "Full-Stack",
     description:
       "Production-grade integration connecting web interfaces with OpenAI and Hugging Face inference APIs. Implements resilient request handling, streaming responses, token usage controls, and secure server-side environment management.",
+    highlights: [
+      "Developed high-throughput gateway connecting client applications with OpenAI GPT-4 and Hugging Face models.",
+      "Implemented real-time Server-Sent Events (SSE) streaming for low-latency conversational responses.",
+      "Engineered exponential backoff retries, request rate limiting, and fallback model degradation.",
+      "Secured API keys and token budgeting behind server-side proxy handlers.",
+    ],
     tags: [
       { name: "OpenAI API", color: "blue-text-gradient" },
       { name: "Hugging Face", color: "pink-text-gradient" },
@@ -468,9 +548,16 @@ const projects = [
     id: "redora-ecommerce",
     name: "Redora Tech E-commerce",
     subtitle: "Full-Stack E-commerce Platform",
+    role: "Full-Stack Developer",
     category: "Full-Stack",
     description:
       "Full-stack e-commerce solution featuring product catalogs, shopping cart workflows, customer authentication, checkout pipeline, inventory management, and responsive administrative dashboards.",
+    highlights: [
+      "Architected scalable e-commerce platform with React frontend and Laravel REST API backend.",
+      "Built dynamic shopping cart, product catalog with multi-attribute filtering, and customer account dashboard.",
+      "Integrated checkout pipelines with inventory decrementing and automated email notifications.",
+      "Created administrative inventory and order fulfillment panels with sales analytical charts.",
+    ],
     tags: [
       { name: "React", color: "blue-text-gradient" },
       { name: "Laravel", color: "pink-text-gradient" },
@@ -485,9 +572,16 @@ const projects = [
     id: "hotelbee-booking",
     name: "HotelBee Booking System",
     subtitle: "Hotel Reservation Engine",
+    role: "Full-Stack Developer",
     category: "Full-Stack",
     description:
       "Online hotel booking and room reservation platform supporting dynamic room availability queries, guest reservation workflows, booking confirmation management, and administrative UI controls.",
+    highlights: [
+      "Built comprehensive room reservation and hospitality booking web platform.",
+      "Developed dynamic date-range availability search preventing double-booking race conditions.",
+      "Engineered guest booking confirmation workflows with automated booking invoice generation.",
+      "Structured normalized relational database schemas for rooms, amenities, pricing tiers, and customer records.",
+    ],
     tags: [
       { name: "Web Development", color: "blue-text-gradient" },
       { name: "JavaScript", color: "pink-text-gradient" },
@@ -502,9 +596,16 @@ const projects = [
     id: "job-finder-portal",
     name: "Job Finder Platform",
     subtitle: "Recruitment & Career Portal",
+    role: "Full-Stack Developer",
     category: "Full-Stack",
     description:
       "Job recruitment platform connecting applicants and employers with faceted search filtering, resume submissions, employer listing dashboards, and candidate application status tracking.",
+    highlights: [
+      "Developed career portal connecting job candidates with hiring organizations.",
+      "Implemented faceted job filtering by industry, salary bracket, experience level, and geographic location.",
+      "Engineered candidate resume submission pipelines and employer applicant review boards.",
+      "Created real-time application status notifications and interview scheduling workflows.",
+    ],
     tags: [
       { name: "React", color: "blue-text-gradient" },
       { name: "JavaScript", color: "green-text-gradient" },
