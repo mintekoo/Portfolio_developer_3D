@@ -8,12 +8,14 @@ import Works from './Works';
 import Feedbacks from './Feedbacks';
 import Contact from './Contact';
 import ProjectDetailsModal from './ProjectDetailsModal';
+import TechMarquee from './TechMarquee';
 
 export {
   Hero,
   Navbar,
   About,
   Tech,
+  TechMarquee,
   Experience,
   Works,
   Feedbacks,
