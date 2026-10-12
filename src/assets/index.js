@@ -38,6 +38,12 @@ import aiApiIntegrations from "./projects/ai_api_integrations.jpg";
 import ecommerceRedora from "./projects/ecommerce_redora.jpg";
 import hotelbee from "./projects/hotelbee.jpg";
 import jobPortal from "./projects/job_portal.jpg";
+import chatApp from "./projects/chat_app.png";
+import abayEqub from "./projects/abay_equb.jpg";
+import delalayeRealEstate from "./projects/delalaye_real_estate.jpg";
+import mgwTutorials from "./projects/mgw_tutorials.jpg";
+import entranceZone from "./projects/entrance_zone.jpg";
+import dailyTransport from "./projects/daily_transport.jpg";
 
 export {
   logo,
@@ -76,4 +82,10 @@ export {
   ecommerceRedora,
   hotelbee,
   jobPortal,
+  chatApp,
+  abayEqub,
+  delalayeRealEstate,
+  mgwTutorials,
+  entranceZone,
+  dailyTransport,
 };

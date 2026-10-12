@@ -18,11 +18,13 @@ const ProjectCard = ({
   live_demo_link,
   source_code_link,
   is_organization_repo,
+  is_company_project,
+  company_name,
 }) => {
   return (
     <motion.div
       layout
-      variants={fadeIn("up", "spring", (index % 3) * 0.2, 0.75)}
+      variants={fadeIn("up", "spring", (index % 3) * 0.15, 0.75)}
       initial="hidden"
       animate="show"
       exit="hidden"
@@ -30,7 +32,7 @@ const ProjectCard = ({
     >
       <Tilt
         options={{
-          max: 25,
+          max: 20,
           scale: 1,
           speed: 450,
         }}
@@ -83,11 +85,18 @@ const ProjectCard = ({
           </div>
 
           <div className="mt-5">
-            {subtitle && (
-              <span className="text-[12px] font-semibold uppercase tracking-wider text-[#915eff]">
-                {subtitle}
-              </span>
-            )}
+            <div className="flex flex-wrap items-center justify-between gap-1.5 mb-1">
+              {subtitle && (
+                <span className="text-[12px] font-semibold uppercase tracking-wider text-[#915eff]">
+                  {subtitle}
+                </span>
+              )}
+              {is_company_project && (
+                <span className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-[#915eff]/15 text-[#b08eff] border border-[#915eff]/30">
+                  🏢 {company_name || "Abyssinia Software"}
+                </span>
+              )}
+            </div>
             <h3 className="text-white font-bold text-[22px] mt-1">{name}</h3>
             <p className="mt-2 text-secondary text-[14px] leading-[22px]">
               {description}
@@ -115,7 +124,9 @@ const Works = () => {
 
   const filteredProjects = activeCategory === "All"
     ? projects
-    : projects.filter((project) => project.category === activeCategory);
+    : activeCategory === "Company Projects"
+      ? projects.filter((project) => project.is_company_project)
+      : projects.filter((project) => project.category === activeCategory);
 
   return (
     <>
@@ -129,7 +140,7 @@ const Works = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
-          The following multi-project showcase highlights my full-stack development experience, backend engineering, mobile app development with Flutter, database reliability, and production AI integrations. Each project demonstrates practical software delivery with live demos, architecture overviews, and source code.
+          The following multi-project showcase highlights my full-stack engineering experience, company projects delivered with Abyssinia Software Technology, backend microservices, mobile app development with Flutter, database reliability, and production AI integrations.
         </motion.p>
       </div>
 
@@ -138,7 +149,9 @@ const Works = () => {
         {projectCategories.map((category) => {
           const count = category === "All"
             ? projects.length
-            : projects.filter((p) => p.category === category).length;
+            : category === "Company Projects"
+              ? projects.filter((p) => p.is_company_project).length
+              : projects.filter((p) => p.category === category).length;
           const isActive = activeCategory === category;
 
           return (
