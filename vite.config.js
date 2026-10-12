@@ -1,8 +1,14 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+const base = process.env.VITE_BASE_PATH
+  || (process.env.GITHUB_PAGES === 'true'
+    ? (process.env.GITHUB_REPOSITORY ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/` : '/Portfolio_developer_3D/')
+    : '/');
+
 // https://vite.dev/config/
 export default defineConfig({
+  base,
   plugins: [react()],
   server: {
     host: '0.0.0.0', // Ensures the app is accessible externally

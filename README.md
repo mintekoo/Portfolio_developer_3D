@@ -4,26 +4,34 @@ A modern, responsive 3D developer portfolio showcasing interactive WebGL visuals
 
 ## 🌐 Live Demo
 
-Visit the live website:
-- **[minte-portfolio.onrender.com](https://minte-portfolio.onrender.com)**
+<!-- LIVE_SITE_START -->
+
+🌐 [View Live Portfolio](https://mintekoo.github.io/Portfolio_developer_3D/)
+
+<!-- LIVE_SITE_END -->
+
+- **Alternative Mirror (Render):** [minte-portfolio.onrender.com](https://minte-portfolio.onrender.com)
 
 ---
 
 ## ✨ Features
 
-- **Interactive 3D Graphics**:
-  - Desktop PC model with dynamic lighting and camera controls in the hero section.
-  - Interactive floating 3D tech icons powered by React Three Fiber with lightweight responsive fallbacks for mobile devices.
-  - Orbiting 3D Earth model with auto-rotation in the contact section.
-  - Starfield background rendering animated 3D particle points.
-- **Responsive & Accessible**:
-  - Smooth mobile navigation menu with full ARIA accessibility and keyboard support.
-  - Adaptive layouts across mobile, tablet, and widescreen desktop displays.
-  - Clean semantic markup with accessible links and image descriptions.
+- **Interactive 3D Graphics & Visuals**:
+  - **Hero Desktop PC**: 3D computer workstation model with realistic directional lighting, responsive camera framing, and intuitive OrbitControls.
+  - **Interactive Tech Spheres**: Floating 3D technology balls featuring decals, dynamic hover physics, and smooth interaction.
+  - **Orbiting Earth**: 3D globe with auto-rotation in the contact section.
+  - **Animated Starfield**: Particle-based 3D background canvas rendering across the hero and contact sections.
+  - **Performance Engineered**: Viewport-based rendering, texture compression, lazy WebGL context activation, and throttled animation loops maintaining 60 FPS.
+- **Responsive & Accessible (a11y)**:
+  - Mobile navigation drawer with full ARIA accessibility, keyboard trapping, and touch gestures.
+  - Fluid responsive layouts across mobile, tablet, laptop, and ultra-wide displays.
+  - Accessible forms, semantic HTML5 tags, and descriptive alt attributes.
 - **Interactive Contact Form**:
-  - EmailJS integration with client-side input validation and non-blocking in-app alert feedback.
-- **Optimized Bundling**:
-  - Vite code-splitting separating React, Three.js, and motion vendors for fast initial load times.
+  - Real-time client-side validation, loading spinners, and non-blocking toast alerts.
+  - Fully integrated with [EmailJS](https://www.emailjs.com/) for instant message delivery without requiring a dedicated backend server.
+- **Optimized Production Bundling**:
+  - Vite code-splitting separating React, Three.js/Fiber/Drei, and motion libraries into optimized vendor chunks.
+  - Automated GitHub Actions CI/CD pipeline for GitHub Pages deployment.
 
 ---
 
@@ -48,7 +56,7 @@ Visit the live website:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/WizMiner/Portfolio_developer_3D.git
+   git clone https://github.com/mintekoo/Portfolio_developer_3D.git
    cd Portfolio_developer_3D
    ```
 
