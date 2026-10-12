@@ -19,10 +19,17 @@ import {
   starbucks,
   tesla,
   shopify,
-  carrent,
-  jobit,
-  tripguide,
   threejs,
+  aiCareerCoach,
+  abyssiniaDating,
+  futurexMicroservices,
+  rideAdminDashboard,
+  digitalCodeFlutter,
+  delalayeBackend,
+  aiApiIntegrations,
+  ecommerceRedora,
+  hotelbee,
+  jobPortal,
 } from "../assets";
 
 export const navLinks = [
@@ -120,6 +127,19 @@ const technologies = [
 
 const experiences = [
   {
+    title: "Full Stack Developer",
+    company_name: "Abyssinia Software Technology",
+    icon: meta,
+    iconBg: "#1d1836",
+    date: "Jan 2024 - Present",
+    points: [
+      "Architecting and delivering full-stack web and mobile platforms, including the Abyssinia Marriage platform and Telegram Mini App integration.",
+      "Developing backend microservices and service routing with Node.js, Express, and MongoDB for scalable production systems.",
+      "Implementing robust security controls: OTP phone verification, role-based authorization, input field allowlisting, and access validation.",
+      "Conducting comprehensive QA/UAT reviews, regression testing, and production deployment automation.",
+    ],
+  },
+  {
     title: "React.js Developer",
     company_name: "Minte",
     icon: starbucks,
@@ -158,19 +178,6 @@ const experiences = [
       "Participating in code reviews and providing constructive feedback to other developers.",
     ],
   },
-  {
-    title: "Full stack Developer",
-    company_name: "MINTE",
-    icon: meta,
-    iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
-    points: [
-      "Developing and maintaining web applications using MERN and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
 ];
 
 const testimonials = [
@@ -200,69 +207,188 @@ const testimonials = [
   },
 ];
 
+export const projectCategories = [
+  "All",
+  "Full-Stack",
+  "Backend & APIs",
+  "Mobile",
+  "Frontend",
+];
+
 const projects = [
   {
-    name: "E-commerce",
+    id: "ai-career-coach",
+    name: "AI Career Coach",
+    subtitle: "Full-Stack Web Application",
+    category: "Full-Stack",
     description:
-      "An end-to-end e-commerce platform designed to provide a seamless shopping experience for customers and efficient management tools for businesses. This platform supports a wide range of features, including user authentication, product management and shopping cart functionality.",
+      "Full-stack AI-powered career coaching platform built with Next.js, Prisma, PostgreSQL, Clerk authentication, and Inngest background event processing. Features automated onboarding, role-based routing, resume optimization workflows, and serverless deployment on Vercel.",
     tags: [
-      {
-        name: "Laravel",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "MYSQL",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
-      },
+      { name: "Next.js", color: "blue-text-gradient" },
+      { name: "React", color: "green-text-gradient" },
+      { name: "PostgreSQL", color: "pink-text-gradient" },
+      { name: "Prisma", color: "orange-text-gradient" },
+      { name: "API Integration", color: "blue-text-gradient" },
     ],
-    image: carrent,
-    source_code_link: "https://github.com/WizMiner/E-Commerce",
+    image: aiCareerCoach,
+    live_demo_link: "https://ai-career-coach-green.vercel.app",
+    source_code_link: "https://github.com/mintekoo/AI-Career-Coach",
   },
   {
-    name: "Job",
+    id: "abyssinia-dating",
+    name: "Abyssinia Marriage Platform",
+    subtitle: "Full-Stack Platform & Telegram Mini App",
+    category: "Full-Stack",
     description:
-      "A comprehensive job recruitment platform designed to connect job seekers with employers efficiently. This platform streamlines the hiring process with advanced features such as job search filters, resume submission, and employer dashboards. It aims to create a seamless experience for both candidates and recruiters.",
+      "Full-stack matchmaking and dating platform built with Node.js, Express, MongoDB, and React with Telegram Mini App integration. Features phone OTP verification, role-based authorization, input field allowlisting, sensitive data protection, and QA/UAT verification.",
     tags: [
-      {
-        name: "laravel",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "MySQL",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Tailwind",
-        color: "pink-text-gradient",
-      },
+      { name: "Node.js", color: "green-text-gradient" },
+      { name: "Express.js", color: "blue-text-gradient" },
+      { name: "React", color: "pink-text-gradient" },
+      { name: "MongoDB", color: "green-text-gradient" },
+      { name: "REST API Development", color: "orange-text-gradient" },
     ],
-    image: jobit,
-    source_code_link: "https://github.com/WizMiner/Employer",
+    image: abyssiniaDating,
+    live_demo_link: "https://dating.ethiomillionsko.com",
+    source_code_link: "https://github.com/abyssiniasoftware",
+    is_client_work: true,
   },
   {
-    name: "Chat App",
+    id: "futurex-microservices",
+    name: "FutureX Microservices",
+    subtitle: "Backend Microservices Architecture",
+    category: "Backend & APIs",
     description:
-      "A dynamic real-time chat application built with the MERN stack, enhanced with Socket.io for live messaging and TailwindCSS + Daisy UI for a sleek, responsive design. Enjoy secure JWT authentication, online user status, and seamless global state management with Zustand. Robust error handling ensures a smooth experience.",
+      "Scalable backend microservices architecture organizing enrollment, activity tracking, and community forum features across independent services. Configured multi-port service routing, subdomain orchestration, and database management.",
     tags: [
-      {
-        name: "React JS",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "mongodb",
-        color: "green-text-gradient",
-      },
-      {
-        name: "MERN",
-        color: "pink-text-gradient",
-      },
+      { name: "Node.js", color: "green-text-gradient" },
+      { name: "REST API Development", color: "blue-text-gradient" },
+      { name: "Microservices", color: "orange-text-gradient" },
+      { name: "Backend Development", color: "pink-text-gradient" },
+      { name: "Database Management", color: "blue-text-gradient" },
     ],
-    image: tripguide,
-    source_code_link: "https://github.com/WizMiner/Chat-App-MERN",
+    image: futurexMicroservices,
+    source_code_link: "https://github.com/abyssiniasoftware/futurex-backend-microservice",
+    is_organization_repo: true,
+  },
+  {
+    id: "ride-admin-dashboard",
+    name: "Ride Admin Dashboard",
+    subtitle: "React Frontend Architecture",
+    category: "Frontend",
+    description:
+      "Enterprise administrative dashboard built with React, Vite, JavaScript, and Tailwind CSS. Implements reusable CRUD components, centralized API client configuration, shared theme/auth context providers, and versioned REST API integration.",
+    tags: [
+      { name: "React", color: "blue-text-gradient" },
+      { name: "JavaScript", color: "pink-text-gradient" },
+      { name: "Tailwind CSS", color: "green-text-gradient" },
+      { name: "REST API Integration", color: "orange-text-gradient" },
+      { name: "Frontend Development", color: "blue-text-gradient" },
+    ],
+    image: rideAdminDashboard,
+    source_code_link: "https://github.com/mintekoo/Ride-Admin-Dashboard",
+  },
+  {
+    id: "digital-code-mobile",
+    name: "Digital Code Mobile App",
+    subtitle: "Flutter Mobile Application",
+    category: "Mobile",
+    description:
+      "Cross-platform mobile application developed with Flutter and Dart using a feature-oriented architecture (Home, Package, Product, Scan). Implements deep link routing, authoritative package payment requests, and automated test coverage.",
+    tags: [
+      { name: "Flutter", color: "blue-text-gradient" },
+      { name: "Dart", color: "pink-text-gradient" },
+      { name: "REST API Integration", color: "green-text-gradient" },
+      { name: "Mobile App Development", color: "orange-text-gradient" },
+      { name: "State Management", color: "blue-text-gradient" },
+    ],
+    image: digitalCodeFlutter,
+    source_code_link: "https://github.com/mintekoo/Digital-Code-Flutter",
+  },
+  {
+    id: "delalaye-backend",
+    name: "Delalaye Backend System",
+    subtitle: "Database Seeding & Validation",
+    category: "Backend & APIs",
+    description:
+      "Deterministic and idempotent database seeding and data validation engine for backend services. Implements environment-aware execution, schema constraint assertions, repeatable seeder pipelines, and automated test verification.",
+    tags: [
+      { name: "Backend Development", color: "green-text-gradient" },
+      { name: "Database Management", color: "blue-text-gradient" },
+      { name: "JavaScript", color: "orange-text-gradient" },
+      { name: "Data Validation", color: "pink-text-gradient" },
+      { name: "Software Testing", color: "green-text-gradient" },
+    ],
+    image: delalayeBackend,
+    source_code_link: "https://github.com/mintekoo/Delalaye-Backend-Seeder",
+  },
+  {
+    id: "ai-api-integrations",
+    name: "AI & API Integrations",
+    subtitle: "Application Development & Gateway",
+    category: "Full-Stack",
+    description:
+      "Production-grade integration connecting web interfaces with OpenAI and Hugging Face inference APIs. Implements resilient request handling, streaming responses, token usage controls, and secure server-side environment management.",
+    tags: [
+      { name: "OpenAI API", color: "blue-text-gradient" },
+      { name: "Hugging Face", color: "pink-text-gradient" },
+      { name: "JavaScript", color: "green-text-gradient" },
+      { name: "REST API Integration", color: "orange-text-gradient" },
+      { name: "Backend Development", color: "blue-text-gradient" },
+    ],
+    image: aiApiIntegrations,
+    source_code_link: "https://github.com/mintekoo/AI-API-Integrations",
+  },
+  {
+    id: "redora-ecommerce",
+    name: "Redora Tech E-commerce",
+    subtitle: "Full-Stack E-commerce Platform",
+    category: "Full-Stack",
+    description:
+      "Full-stack e-commerce solution featuring product catalogs, shopping cart workflows, customer authentication, checkout pipeline, inventory management, and responsive administrative dashboards.",
+    tags: [
+      { name: "React", color: "blue-text-gradient" },
+      { name: "Laravel", color: "pink-text-gradient" },
+      { name: "JavaScript", color: "green-text-gradient" },
+      { name: "Database Management", color: "orange-text-gradient" },
+      { name: "REST APIs", color: "blue-text-gradient" },
+    ],
+    image: ecommerceRedora,
+    source_code_link: "https://github.com/mintekoo/E-Commerce",
+  },
+  {
+    id: "hotelbee-booking",
+    name: "HotelBee Booking System",
+    subtitle: "Hotel Reservation Engine",
+    category: "Full-Stack",
+    description:
+      "Online hotel booking and room reservation platform supporting dynamic room availability queries, guest reservation workflows, booking confirmation management, and administrative UI controls.",
+    tags: [
+      { name: "Web Development", color: "blue-text-gradient" },
+      { name: "JavaScript", color: "pink-text-gradient" },
+      { name: "Database Management", color: "green-text-gradient" },
+      { name: "Backend Development", color: "orange-text-gradient" },
+      { name: "UI Design", color: "blue-text-gradient" },
+    ],
+    image: hotelbee,
+    source_code_link: "https://github.com/mintekoo/Hotel-Booking-System",
+  },
+  {
+    id: "job-finder-portal",
+    name: "Job Finder Platform",
+    subtitle: "Recruitment & Career Portal",
+    category: "Full-Stack",
+    description:
+      "Job recruitment platform connecting applicants and employers with faceted search filtering, resume submissions, employer listing dashboards, and candidate application status tracking.",
+    tags: [
+      { name: "Web Development", color: "blue-text-gradient" },
+      { name: "JavaScript", color: "green-text-gradient" },
+      { name: "Database Management", color: "orange-text-gradient" },
+      { name: "REST APIs", color: "pink-text-gradient" },
+      { name: "Frontend Development", color: "blue-text-gradient" },
+    ],
+    image: jobPortal,
+    source_code_link: "https://github.com/mintekoo/Job-Portal-System",
   },
 ];
 

@@ -26,9 +26,18 @@ import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
+import externalLink from "./external-link.svg";
+
+import aiCareerCoach from "./projects/ai_career_coach.jpg";
+import abyssiniaDating from "./projects/abyssinia_dating.jpg";
+import futurexMicroservices from "./projects/futurex_microservices.jpg";
+import rideAdminDashboard from "./projects/ride_admin_dashboard.jpg";
+import digitalCodeFlutter from "./projects/digital_code_flutter.jpg";
+import delalayeBackend from "./projects/delalaye_backend.jpg";
+import aiApiIntegrations from "./projects/ai_api_integrations.jpg";
+import ecommerceRedora from "./projects/ecommerce_redora.jpg";
+import hotelbee from "./projects/hotelbee.jpg";
+import jobPortal from "./projects/job_portal.jpg";
 
 export {
   logo,
@@ -39,6 +48,7 @@ export {
   github,
   menu,
   close,
+  externalLink,
   css,
   docker,
   figma,
@@ -56,7 +66,14 @@ export {
   shopify,
   starbucks,
   tesla,
-  carrent,
-  jobit,
-  tripguide,
+  aiCareerCoach,
+  abyssiniaDating,
+  futurexMicroservices,
+  rideAdminDashboard,
+  digitalCodeFlutter,
+  delalayeBackend,
+  aiApiIntegrations,
+  ecommerceRedora,
+  hotelbee,
+  jobPortal,
 };
