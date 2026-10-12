@@ -53,16 +53,23 @@ const Navbar = () => {
       <div className="flex items-center justify-between w-full mx-auto max-w-7xl">
         <Link
           to="/"
-          className="flex items-center gap-2"
+          className="flex items-center gap-3 group"
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="Minte logo" className="object-contain h-12 w-12" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex ">
+          <div className="relative flex items-center justify-center">
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#915eff] to-[#00cea8] opacity-30 blur-sm transition-opacity duration-300 group-hover:opacity-80" />
+            <img
+              src={logo}
+              alt="Minte logo"
+              className="relative object-contain h-12 w-12 rounded-2xl transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+          <p className="text-white text-[18px] font-bold cursor-pointer flex items-center">
             Minte &nbsp;
-            <span className="hidden sm:block"> | Full Stack Developer</span>
+            <span className="hidden sm:block text-slate-300 font-normal">| Full Stack Developer</span>
           </p>
         </Link>
 
