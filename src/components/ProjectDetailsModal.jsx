@@ -1,8 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { github, externalLink, close } from "../assets";
 
 const ProjectDetailsModal = ({ project, onClose }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     if (!project) return;
 
@@ -22,11 +29,13 @@ const ProjectDetailsModal = ({ project, onClose }) => {
     };
   }, [project, onClose]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {project && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+          className="fixed inset-0 z-[999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
           role="presentation"
         >
           {/* Backdrop with blur & light-dismiss */}
@@ -218,7 +227,8 @@ const ProjectDetailsModal = ({ project, onClose }) => {
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 
