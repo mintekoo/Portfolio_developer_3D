@@ -40,7 +40,8 @@ A modern, responsive 3D developer portfolio showcasing interactive WebGL visuals
 - **Frontend Core**: [React 18](https://react.dev/), [React Router](https://reactrouter.com/)
 - **3D & Visuals**: [Three.js](https://threejs.org/), [@react-three/fiber](https://github.com/pmndrs/react-three-fiber), [@react-three/drei](https://github.com/pmndrs/drei), [maath](https://github.com/pmndrs/maath)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/), [PostCSS](https://postcss.org/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/), [react-tilt](https://www.npmjs.com/package/react-tilt), [react-vertical-timeline-component](https://www.npmjs.com/package/react-vertical-timeline-component)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/), [react-tilt](https://www.npmjs.com/package/react-tilt)
+- **Icons & Assets**: [React Icons](https://react-icons.github.io/react-icons/)
 - **Services & Tools**: [EmailJS](https://www.emailjs.com/), [Vite](https://vitejs.dev/), [ESLint](https://eslint.org/)
 
 ---
