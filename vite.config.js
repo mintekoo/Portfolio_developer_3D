@@ -23,7 +23,7 @@ export default defineConfig({
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
           'vendor-three': ['three', '@react-three/fiber', '@react-three/drei'],
-          'vendor-motion': ['framer-motion', 'react-tilt', 'react-vertical-timeline-component'],
+          'vendor-motion': ['framer-motion', 'react-tilt'],
         },
       },
     },
