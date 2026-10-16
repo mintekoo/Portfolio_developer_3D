@@ -4,6 +4,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Mercury — Alpine banking at blue hour design tokens */
+  --color-onyx-canvas: #171721;
+  --color-graphite-card: #1e1e2a;
+  --color-obsidian-button: #272735;
+  --color-slate-border: #70707d;
+  --color-mist-border: #e2e3ed;
+  --color-ash-text: #c3c3cc;
+  --color-ivory-text: #ededf3;
+  --color-cobalt: #5266eb;
+  --color-pure-white: #ffffff;
+
+  --radius-cards: 12px;
+  --radius-buttons: 32px;
+  --radius-nav: 40px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,9 +31,7 @@
 }
 
 .hash-span {
-  margin-top: -100px;
-  padding-bottom: 100px;
-  display: block;
+  display: none;
 }
 
 .black-gradient {

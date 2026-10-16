@@ -7,9 +7,9 @@ import {
   Experience,
   Feedbacks,
   Hero,
+  MercuryHero,
   Navbar,
   Tech,
-  TechMarquee,
   Works,
   StarsCanvas,
 } from "./components";
@@ -35,7 +35,7 @@ const App = () => {
           <Navbar />
           <Hero />
         </div>
-        <TechMarquee />
+        <MercuryHero />
         <About />
         <Experience />
         <Tech />

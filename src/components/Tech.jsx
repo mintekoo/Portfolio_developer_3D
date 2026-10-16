@@ -75,18 +75,18 @@ const getBallPositions = () => {
   const positions = [];
   // Row 1: 7 technologies
   const row1Count = 7;
-  const row1Spacing = 2.5;
+  const row1Spacing = 2.4;
   const row1StartX = -((row1Count - 1) * row1Spacing) / 2;
   for (let i = 0; i < row1Count; i++) {
-    positions.push([row1StartX + i * row1Spacing, 1.6, 0]);
+    positions.push([row1StartX + i * row1Spacing, 1.2, 0]);
   }
 
   // Row 2: 6 technologies
   const row2Count = 6;
-  const row2Spacing = 2.5;
+  const row2Spacing = 2.4;
   const row2StartX = -((row2Count - 1) * row2Spacing) / 2;
   for (let i = 0; i < row2Count; i++) {
-    positions.push([row2StartX + i * row2Spacing, -1.6, 0]);
+    positions.push([row2StartX + i * row2Spacing, -1.2, 0]);
   }
 
   return positions;
@@ -136,6 +136,15 @@ const Tech = () => {
 
   return (
     <div ref={containerRef} className='relative w-full select-none'>
+      <div className="flex flex-col items-center justify-center text-center mb-3">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#915eff]/10 border border-[#915eff]/20">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#915eff] animate-pulse" />
+          <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#915eff]">
+            Interactive 3D Tech Stack
+          </span>
+        </div>
+      </div>
+
       {isMobile ? (
         // Clean, responsive 2D icon grid for mobile screens
         <div className='flex flex-row flex-wrap justify-center gap-6 sm:gap-8'>
@@ -158,9 +167,9 @@ const Tech = () => {
         </div>
       ) : (
         // Unified single WebGL Canvas for all 13 3D skill balls
-        <div className='w-full max-w-6xl mx-auto h-[440px] relative rounded-2xl overflow-hidden bg-primary/40 border border-white/5 shadow-2xl'>
+        <div className='w-full max-w-6xl mx-auto h-[320px] sm:h-[340px] relative rounded-2xl overflow-hidden bg-primary/40 border border-white/5 shadow-2xl'>
           {/* Active hover info badge */}
-          <div className='absolute top-4 left-1/2 -translate-x-1/2 z-10 pointer-events-none transition-all duration-300'>
+          <div className='absolute top-3 left-1/2 -translate-x-1/2 z-10 pointer-events-none transition-all duration-300'>
             {hoveredName ? (
               <span className='px-4 py-1.5 rounded-full bg-[#915EFF]/20 border border-[#915EFF]/50 text-white font-semibold text-sm shadow-[0_0_15px_rgba(145,94,255,0.4)]'>
                 {hoveredName}
@@ -205,7 +214,7 @@ const Tech = () => {
           </CanvasErrorBoundary>
 
           {/* Interactive instruction footer pill */}
-          <div className='absolute bottom-3 left-1/2 -translate-x-1/2 pointer-events-none text-xs text-secondary/80 bg-black/50 px-3.5 py-1 rounded-full border border-white/10 backdrop-blur-sm'>
+          <div className='absolute bottom-2.5 left-1/2 -translate-x-1/2 pointer-events-none text-[11px] sm:text-xs text-secondary/80 bg-black/60 px-3.5 py-0.5 sm:py-1 rounded-full border border-white/10 backdrop-blur-sm'>
             Interactive 3D Skill Spheres • Drag to rotate perspective
           </div>
         </div>
@@ -214,5 +223,5 @@ const Tech = () => {
   );
 };
 
-const TechSection = SectionWrapper(Tech, "tech");
+const TechSection = SectionWrapper(Tech, "tech", "sm:px-16 px-6 pt-1 pb-2 sm:pt-2 sm:pb-3");
 export default TechSection;

@@ -1,5 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, forwardRef } from "react";
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "framer-motion";
+import { HiCodeBracket, HiRocketLaunch, HiAcademicCap, HiBriefcase } from "react-icons/hi2";
 
 import { styles } from "../styles";
 import { experiences } from "../constants";
@@ -7,14 +8,21 @@ import { SectionWrapper } from "../hoc";
 import { textVariant, fadeIn } from "../utils/motion";
 import { CareerCanvas } from "./canvas";
 
-const ExperienceCard = ({
+const roleIcons = {
+  "abyssinia-software": HiCodeBracket,
+  "freelance-developer": HiRocketLaunch,
+  "jit-developer": HiAcademicCap,
+};
+
+const ExperienceCard = forwardRef(({
   experience,
   index,
   isActive,
   onSelect,
-}) => {
+}, ref) => {
   return (
     <motion.div
+      ref={ref}
       variants={fadeIn("up", "spring", index * 0.18, 0.75)}
       initial="hidden"
       whileInView="show"
@@ -38,11 +46,20 @@ const ExperienceCard = ({
         }}
         title={`${experience.title} at ${experience.company_name}`}
       >
-        <img
-          src={experience.icon}
-          alt={experience.company_name}
-          className="w-full h-full object-contain"
-        />
+        {(() => {
+          const IconComponent =
+            (typeof experience.icon === "function" && experience.icon) ||
+            roleIcons[experience.id] ||
+            HiBriefcase;
+
+          return (
+            <IconComponent
+              className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:scale-110"
+              style={{ color: experience.accentColor || "#ffffff" }}
+              aria-hidden="true"
+            />
+          );
+        })()}
       </div>
 
       {/* Horizontal Connector to Card */}
@@ -175,7 +192,9 @@ const ExperienceCard = ({
       </div>
     </motion.div>
   );
-};
+});
+
+ExperienceCard.displayName = "ExperienceCard";
 
 const Experience = () => {
   const [activeMilestone, setActiveMilestone] = useState(0);
@@ -280,10 +299,16 @@ const Experience = () => {
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
-              <span
-                className="relative z-10 w-2 h-2 rounded-full shrink-0"
-                style={{ backgroundColor: exp.accentColor || "#915eff" }}
-              />
+              {(() => {
+                const FilterIcon = roleIcons[exp.id] || HiBriefcase;
+                return (
+                  <FilterIcon
+                    className="relative z-10 w-3.5 h-3.5 shrink-0"
+                    style={{ color: exp.accentColor || "#915eff" }}
+                    aria-hidden="true"
+                  />
+                );
+              })()}
               <span className="relative z-10">{exp.company_name}</span>
             </button>
           );

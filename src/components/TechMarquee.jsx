@@ -39,14 +39,17 @@ const skills = [
   { name: "Express.js", icon: SiExpress, color: "#ffffff" },
 ];
 
-const TechMarquee = () => {
+const TechMarquee = ({ id = "tech-marquee", className = "" }) => {
   return (
-    <section className="relative w-full py-10 bg-primary/90 overflow-hidden border-y border-white/[0.05]">
+    <section
+      id={id}
+      className={`relative w-full py-10 bg-primary overflow-hidden border-y border-white/[0.06] ${className}`}
+    >
       <div className="max-w-7xl mx-auto px-6 mb-6">
         <div className="flex flex-col items-center justify-center text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#00cea8] animate-pulse" />
-            <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#aaa6c3]">
+            <span className="w-2 h-2 rounded-full bg-[#915eff] animate-pulse" />
+            <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-secondary">
               Technologies I Work With
             </span>
           </div>
@@ -56,13 +59,13 @@ const TechMarquee = () => {
       <div className="relative overflow-hidden w-full">
         {/* Left Gradient Edge Mask */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-r from-primary via-primary/80 to-transparent z-10 pointer-events-none"
+          className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-r from-primary via-primary/85 to-transparent z-10 pointer-events-none"
           aria-hidden="true"
         />
 
         {/* Right Gradient Edge Mask */}
         <div
-          className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-l from-primary via-primary/80 to-transparent z-10 pointer-events-none"
+          className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 bg-gradient-to-l from-primary via-primary/85 to-transparent z-10 pointer-events-none"
           aria-hidden="true"
         />
 

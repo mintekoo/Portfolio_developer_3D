@@ -28,7 +28,7 @@ const Hero = () => {
       <ComputersCanvas />
 
       <div className="absolute flex items-center justify-center w-full xs:bottom-10 bottom-32">
-        <a href="#about" aria-label="Scroll down to About section">
+        <a href="#observatory" aria-label="Scroll down to Observatory section">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
               animate={{

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -17,6 +17,24 @@ const Contact = () => {
 
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
+
+  useEffect(() => {
+    const handlePrefill = (e) => {
+      if (e.detail) {
+        setForm((prev) => ({ ...prev, email: e.detail }));
+      }
+    };
+    window.addEventListener("prefill-email", handlePrefill);
+
+    try {
+      const saved = sessionStorage.getItem("prefill_email");
+      if (saved) {
+        setForm((prev) => ({ ...prev, email: saved }));
+      }
+    } catch (_) {}
+
+    return () => window.removeEventListener("prefill-email", handlePrefill);
+  }, []);
 
   const handleChange = (e) => {
     const { target } = e;

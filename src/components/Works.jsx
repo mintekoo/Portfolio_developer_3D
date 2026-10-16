@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import { Tilt } from "react-tilt";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -6,10 +6,10 @@ import { styles } from "../styles";
 import { github, externalLink } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects, projectCategories } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
+import { fadeIn } from "../utils/motion";
 import ProjectDetailsModal from "./ProjectDetailsModal";
 
-const ProjectCard = ({
+const ProjectCard = forwardRef(({
   index,
   name,
   subtitle,
@@ -22,9 +22,10 @@ const ProjectCard = ({
   is_company_project,
   company_name,
   onSelect,
-}) => {
+}, ref) => {
   return (
     <motion.div
+      ref={ref}
       layout
       variants={fadeIn("up", "spring", (index % 3) * 0.15, 0.75)}
       initial="hidden"
@@ -146,7 +147,9 @@ const ProjectCard = ({
       </Tilt>
     </motion.div>
   );
-};
+});
+
+ProjectCard.displayName = "ProjectCard";
 
 const Works = () => {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -160,22 +163,30 @@ const Works = () => {
 
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: "some" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <p className={`${styles.sectionSubText}`}>My work</p>
         <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
       </motion.div>
 
       <div className="flex w-full">
         <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
-          className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: "some" }}
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          className="mt-2 text-secondary text-[16px] sm:text-[17px] max-w-3xl leading-[28px]"
         >
           The following multi-project showcase highlights my full-stack engineering experience, company projects delivered with Abyssinia Software Technology, backend microservices, mobile app development with Flutter, database reliability, and production AI integrations.
         </motion.p>
       </div>
 
       {/* Category Filter Tabs */}
-      <div className="flex flex-wrap items-center gap-2.5 mt-8">
+      <div className="flex flex-wrap items-center gap-2.5 mt-4 sm:mt-5">
         {projectCategories.map((category) => {
           const count = category === "All"
             ? projects.length
@@ -210,7 +221,7 @@ const Works = () => {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mt-12 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mt-6 sm:mt-7 w-full">
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, index) => (
             <ProjectCard
@@ -233,5 +244,5 @@ const Works = () => {
   );
 };
 
-const WorksSection = SectionWrapper(Works, "projects");
+const WorksSection = SectionWrapper(Works, "projects", "sm:px-16 px-6 pt-2 pb-16 sm:pt-3 sm:pb-20");
 export default WorksSection;
