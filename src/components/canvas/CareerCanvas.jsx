@@ -448,7 +448,7 @@ const CareerCanvas = ({ activeMilestone, onSelectMilestone }) => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full max-w-4xl h-[320px] sm:h-[380px] mx-auto my-6 rounded-2xl overflow-hidden border border-white/[0.08] bg-gradient-to-b from-[#151030]/80 via-[#100d25]/80 to-black/80 shadow-2xl backdrop-blur-xl group"
+      className="relative w-full h-[260px] xs:h-[300px] sm:h-[350px] md:h-[380px] my-4 sm:my-6 rounded-3xl overflow-hidden border border-white/[0.08] bg-gradient-to-b from-[#151030]/80 via-[#100d25]/80 to-black/80 shadow-2xl backdrop-blur-xl group"
     >
       {/* 3D Header Overlay Eyebrow */}
       <div className="absolute top-3.5 left-4 z-10 flex items-center gap-2 pointer-events-none">

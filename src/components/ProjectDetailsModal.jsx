@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { HiCommandLine } from "react-icons/hi2";
 import { github, externalLink, close } from "../assets";
 
 const ProjectDetailsModal = ({ project, onClose }) => {
@@ -216,9 +217,10 @@ const ProjectDetailsModal = ({ project, onClose }) => {
                   {project.tags.map((tag) => (
                     <span
                       key={`${project.id || project.name}-${tag.name}`}
-                      className={`px-3 py-1 rounded-lg text-[12px] sm:text-[13px] font-medium bg-black/40 border border-white/5 ${tag.color}`}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[12px] sm:text-[13px] font-medium bg-black/40 border border-white/5 ${tag.color}`}
                     >
-                      #{tag.name}
+                      <HiCommandLine className="w-3.5 h-3.5 shrink-0 text-[#915eff]" />
+                      <span>{tag.name}</span>
                     </span>
                   ))}
                 </div>

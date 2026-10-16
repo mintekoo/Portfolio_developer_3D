@@ -10,6 +10,8 @@ import Feedbacks from './Feedbacks';
 import Contact from './Contact';
 import ProjectDetailsModal from './ProjectDetailsModal';
 import TechMarquee from './TechMarquee';
+import HoverExpandGallery from './HoverExpandGallery';
+import InvertedPerspectiveCarousel from './InvertedPerspectiveCarousel';
 
 export {
   Hero,
@@ -23,6 +25,8 @@ export {
   Feedbacks,
   Contact,
   ProjectDetailsModal,
+  HoverExpandGallery,
+  InvertedPerspectiveCarousel,
   EarthCanvas, 
   BallCanvas, 
   ComputersCanvas, 

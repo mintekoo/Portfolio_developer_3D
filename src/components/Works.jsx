@@ -1,6 +1,7 @@
-import { useState, forwardRef } from "react";
+import { useState, useMemo, forwardRef } from "react";
 import { Tilt } from "react-tilt";
 import { motion, AnimatePresence } from "framer-motion";
+import { HiCommandLine } from "react-icons/hi2";
 
 import { styles } from "../styles";
 import { github, externalLink } from "../assets";
@@ -8,6 +9,7 @@ import { SectionWrapper } from "../hoc";
 import { projects, projectCategories } from "../constants";
 import { fadeIn } from "../utils/motion";
 import ProjectDetailsModal from "./ProjectDetailsModal";
+import HoverExpandGallery from "./HoverExpandGallery";
 
 const ProjectCard = forwardRef(({
   index,
@@ -120,14 +122,15 @@ const ProjectCard = forwardRef(({
         </div>
 
         <div className="flex items-center justify-between gap-2 mt-5 pt-3 border-t border-white/5">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5">
             {tags.map((tag) => (
-              <p
+              <span
                 key={`${name}-${tag.name}`}
-                className={`text-[13px] font-medium ${tag.color}`}
+                className={`inline-flex items-center gap-1 text-[12px] font-medium px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.06] ${tag.color}`}
               >
-                #{tag.name}
-              </p>
+                <HiCommandLine className="w-2.5 h-2.5 shrink-0 opacity-80" />
+                <span>{tag.name}</span>
+              </span>
             ))}
           </div>
 
@@ -154,6 +157,19 @@ ProjectCard.displayName = "ProjectCard";
 const Works = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
+
+  const flagshipProjects = useMemo(() => {
+    const flagshipIds = [
+      "abay-equb",
+      "delalaye-real-estate",
+      "ai-career-coach",
+      "abyssinia-dating",
+      "futurex-microservices",
+    ];
+    return flagshipIds
+      .map((id) => projects.find((p) => p.id === id))
+      .filter(Boolean);
+  }, []);
 
   const filteredProjects = activeCategory === "All"
     ? projects
@@ -185,8 +201,33 @@ const Works = () => {
         </motion.p>
       </div>
 
+      {/* Featured Flagship Hover Expand Gallery */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: "some" }}
+        transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+      >
+        <HoverExpandGallery
+          items={flagshipProjects}
+          onSelectProject={(project) => setSelectedProject(project)}
+        />
+      </motion.div>
+
+      {/* Full Catalog Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-8 mb-3 pt-5 border-t border-white/[0.08]">
+        <div>
+          <h3 className="text-white text-base sm:text-lg font-bold tracking-tight">
+            Explore All Project Categories
+          </h3>
+          <p className="text-secondary text-xs">
+            Filter 16+ production, company, and open-source systems by specialization
+          </p>
+        </div>
+      </div>
+
       {/* Category Filter Tabs */}
-      <div className="flex flex-wrap items-center gap-2.5 mt-4 sm:mt-5">
+      <div className="flex flex-wrap items-center gap-2.5 mt-2 sm:mt-3">
         {projectCategories.map((category) => {
           const count = category === "All"
             ? projects.length
