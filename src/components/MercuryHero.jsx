@@ -91,7 +91,9 @@ const MercuryHero = () => {
     try {
       sessionStorage.setItem("prefill_email", cleanEmail);
       window.dispatchEvent(new CustomEvent("prefill-email", { detail: cleanEmail }));
-    } catch (_) {}
+    } catch (err) {
+      void err;
+    }
 
     // Smoothly scroll to the contact section after brief confirmation
     setTimeout(() => {

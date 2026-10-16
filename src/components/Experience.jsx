@@ -5,7 +5,7 @@ import { HiCodeBracket, HiRocketLaunch, HiAcademicCap, HiBriefcase } from "react
 import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { textVariant, fadeIn } from "../utils/motion";
+import { fadeIn } from "../utils/motion";
 import { CareerCanvas } from "./canvas";
 
 const roleIcons = {
@@ -228,11 +228,17 @@ const Experience = () => {
 
   return (
     <>
-      <motion.div variants={textVariant()} className="text-center">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: "some" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="text-center"
+      >
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#915eff]/10 border border-[#915eff]/20 mb-3">
           <span className="w-1.5 h-1.5 rounded-full bg-[#915eff] animate-pulse" />
           <span className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#915eff]">
-            Career Trajectory
+            Interactive 3D Career Sphere
           </span>
         </div>
         <h2 className={`${styles.sectionHeadText}`}>
@@ -240,12 +246,12 @@ const Experience = () => {
         </h2>
       </motion.div>
 
-      {/* Interactive 3D WebGL Career Matrix Canvas */}
+      {/* Interactive 3D WebGL Career Sphere Canvas */}
       <motion.div
-        variants={fadeIn("up", "spring", 0.1, 0.75)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: "some" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
       >
         <CareerCanvas
           activeMilestone={activeMilestone}

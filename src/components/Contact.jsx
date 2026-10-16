@@ -31,7 +31,9 @@ const Contact = () => {
       if (saved) {
         setForm((prev) => ({ ...prev, email: saved }));
       }
-    } catch (_) {}
+    } catch (err) {
+      void err;
+    }
 
     return () => window.removeEventListener("prefill-email", handlePrefill);
   }, []);
